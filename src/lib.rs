@@ -1,9 +1,6 @@
 //! CS410P - Homework #2: Toy RSA
 //! Zach Roth 2023
-//! Homework #2
-//! Spring 2023
 
-//! https://pdx-cs-rust.github.io/toy-rsa-lib/toy_rsa_lib/index.html
 use std::convert::TryFrom;
 use toy_rsa_lib::*;
 
@@ -15,9 +12,9 @@ pub fn genkey() -> (u32, u32) {
     loop {
         let p: u32 = rsa_prime();
         let q: u32 = rsa_prime();
-        // Convert to 64-bit
         let p_64 = u64::from(p);
         let q_64 = u64::from(q);
+
         let lcm: u64 = lcm(p_64 - 1, q_64 - 1);
 
         if EXP < lcm && gcd(EXP, lcm) == 1 {
